@@ -9,16 +9,15 @@ const Footer = () => {
         {/* Main Footer Content */}
         <div className="py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
-          <div className="md:col-span-2">
+          <div className="md:col-span-1">
             <Link to="/" className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 bg-gradient-to-br from-warm-beige to-accent-dark rounded-xl flex items-center justify-center shadow-md">
                 <span className="text-white text-xl">🍞</span>
               </div>
               <span className="text-xl font-bold text-accent-dark">BIT Bakery</span>
             </Link>
-            <p className="text-secondary text-sm leading-relaxed max-w-md">
-              Dibuat dengan cinta dan dedikasi tinggi. Setiap roti kami dipanggang 
-              segar setiap hari menggunakan bahan-bahan berkualitas premium.
+            <p className="text-secondary text-sm leading-relaxed">
+              Dibuat dengan cinta dan dedikasi tinggi. Roti segar setiap hari.
             </p>
             {/* Social Icons */}
             <div className="flex gap-3 mt-6">
@@ -35,6 +34,50 @@ const Footer = () => {
             </div>
           </div>
 
+          {/* Products */}
+          <div>
+            <h4 className="font-semibold text-accent-dark mb-4">Produk</h4>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link to="/breads" className="text-secondary hover:text-accent-dark transition-colors flex items-center gap-2">
+                  <span>🍞</span> Breads
+                </Link>
+              </li>
+              <li>
+                <Link to="/pastries" className="text-secondary hover:text-accent-dark transition-colors flex items-center gap-2">
+                  <span>🥐</span> Pastries
+                </Link>
+              </li>
+              <li>
+                <Link to="/manage-bread" className="text-secondary hover:text-accent-dark transition-colors flex items-center gap-2">
+                  <span>➕</span> Tambah Produk
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Company */}
+          <div>
+            <h4 className="font-semibold text-accent-dark mb-4">Perusahaan</h4>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link to="/about" className="text-secondary hover:text-accent-dark transition-colors">
+                  Tentang Kami
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="text-secondary hover:text-accent-dark transition-colors">
+                  Hubungi Kami
+                </Link>
+              </li>
+              <li>
+                <a href="#" className="text-secondary hover:text-accent-dark transition-colors">
+                  Karir
+                </a>
+              </li>
+            </ul>
+          </div>
+
           {/* Hours */}
           <div>
             <h4 className="font-semibold text-accent-dark mb-4">Jam Buka</h4>
@@ -42,10 +85,10 @@ const Footer = () => {
               <li className="flex justify-between">
                 <span>Selasa - Minggu</span>
               </li>
-              <li className="flex justify-between font-medium text-accent-dark">
-                <span>07:00 - 16:00</span>
+              <li className="font-medium text-accent-dark">
+                07:00 - 16:00
               </li>
-              <li className="flex justify-between mt-4">
+              <li className="flex justify-between mt-3">
                 <span>Senin</span>
               </li>
               <li className="text-red-500 font-medium">
@@ -53,35 +96,19 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-semibold text-accent-dark mb-4">Menu</h4>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link to="/" className="text-secondary hover:text-accent-dark transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link to="/breads" className="text-secondary hover:text-accent-dark transition-colors">
-                  Daftar Produk
-                </Link>
-              </li>
-              <li>
-                <Link to="/manage-bread" className="text-secondary hover:text-accent-dark transition-colors">
-                  Tambah Produk
-                </Link>
-              </li>
-            </ul>
-          </div>
         </div>
 
         {/* Bottom Bar */}
         <div className="py-4 border-t border-cream-pastel">
-          <p className="text-center text-xs text-secondary">
-            © 2025 BIT Bakery. All Rights Reserved. Made with ❤️
-          </p>
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p className="text-xs text-secondary">
+              © 2025 BIT Bakery. All Rights Reserved.
+            </p>
+            <div className="flex gap-6 text-xs text-secondary">
+              <a href="#" className="hover:text-accent-dark transition-colors">Privacy Policy</a>
+              <a href="#" className="hover:text-accent-dark transition-colors">Terms of Service</a>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

@@ -7,13 +7,18 @@ const Header = () => {
   const location = useLocation();
 
   const isActive = (path) => {
-    if (path === "/") return location.pathname === "/" || location.pathname === "/breads";
-    return location.pathname.startsWith(path);
+    if (path === "/" && location.pathname === "/") return true;
+    if (path === "/breads" && (location.pathname === "/breads" || location.pathname.startsWith("/manage-bread"))) return true;
+    if (path !== "/" && path !== "/breads") return location.pathname === path;
+    return false;
   };
 
   const navLinks = [
-    { path: "/", label: "Home" },
-    { path: "/breads", label: "Breads" },
+    { path: "/", label: "Home", icon: "🏠" },
+    { path: "/breads", label: "Breads", icon: "🍞" },
+    { path: "/pastries", label: "Pastries", icon: "🥐" },
+    { path: "/about", label: "About", icon: "ℹ️" },
+    { path: "/contact", label: "Contact", icon: "📞" },
   ];
 
   return (
@@ -32,7 +37,7 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-1">
+          <nav className="hidden lg:flex items-center space-x-1">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
@@ -62,7 +67,7 @@ const Header = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 rounded-lg hover:bg-cream-pastel/50 transition-colors"
+              className="lg:hidden p-2 rounded-lg hover:bg-cream-pastel/50 transition-colors"
             >
               <svg className="w-6 h-6 text-accent-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 {mobileMenuOpen ? (
@@ -77,19 +82,20 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-t border-cream-pastel pb-4">
+          <div className="lg:hidden border-t border-cream-pastel pb-4 animate-in">
             <nav className="flex flex-col space-y-1 pt-4">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`px-4 py-3 rounded-xl text-sm font-medium transition-all ${
+                  className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
                     isActive(link.path)
                       ? "bg-cream-pastel text-accent-dark"
                       : "text-secondary hover:text-accent-dark hover:bg-cream-pastel/50"
                   }`}
                 >
+                  <span className="text-lg">{link.icon}</span>
                   {link.label}
                 </Link>
               ))}

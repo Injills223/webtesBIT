@@ -28,5 +28,49 @@
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtf0x7Jy0smcR5VtN5Qzct-c0V3_GmfP1Lmw&s",
       "id": "1764108830804"
     }
+  ],
+  "pastries": [
+    {
+      "id": "1",
+      "name": "Chocolate Danish",
+      "price": 28000,
+      "description": "Danish pastry dengan isian coklat premium Belgium",
+      "image": "https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=400"
+    },
+    {
+      "id": "2",
+      "name": "Almond Croissant",
+      "price": 32000,
+      "description": "Croissant dengan topping almond slice dan isian almond cream",
+      "image": "https://images.unsplash.com/photo-1623334044303-241021148842?w=400"
+    },
+    {
+      "id": "3",
+      "name": "Pain au Chocolat",
+      "price": 26000,
+      "description": "Pastry klasik Prancis dengan dua batang coklat di dalamnya",
+      "image": "https://images.unsplash.com/photo-1530610476181-d83430b64dcd?w=400"
+    },
+    {
+      "id": "4",
+      "name": "Cinnamon Roll",
+      "price": 24000,
+      "description": "Roll manis dengan kayu manis dan cream cheese frosting",
+      "image": "https://images.unsplash.com/photo-1509365390695-33aee754301f?w=400"
+    },
+    {
+      "id": "5",
+      "name": "Apple Strudel",
+      "price": 30000,
+      "description": "Pastry renyah dengan isian apel, kismis, dan kayu manis",
+      "image": "https://images.unsplash.com/photo-1562007908-17c67e878c88?w=400"
+    },
+    {
+      "id": "6",
+      "name": "Éclair Coklat",
+      "price": 22000,
+      "description": "Choux pastry dengan isian cream dan topping coklat glossy",
+      "image": "https://images.unsplash.com/photo-1525059696034-4967a8e1dca2?w=400"
+    }
   ]
 }
