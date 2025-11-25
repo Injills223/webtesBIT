@@ -9,13 +9,13 @@ import ManageBread from './pages/ManageBread';
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-[#FFF2DF] font-['Plus_Jakarta_Sans',sans-serif] text-[#8C6E63] flex flex-col">
+      <div className="min-h-screen bg-creamy-white font-display text-secondary flex flex-col">
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/breads" element={<Home />} />
-          <Route path="/manage-bread" element={<ManageBread />} /> {/* Untuk tambah */}
-          <Route path="/manage-bread/:id" element={<ManageBread />} /> {/* Untuk edit */}
+          <Route path="/manage-bread" element={<ManageBread />} />
+          <Route path="/manage-bread/:id" element={<ManageBread />} />
         </Routes>
         <Footer />
       </div>

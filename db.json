@@ -1,60 +1,32 @@
 {
   "breads": [
     {
-      "id": "",
-      "name": "fkbmfkv",
-      "price": 2000,
-      "description": "enak",
-      "image": "https://images.crowdspring.com/blog/wp-content/uploads/2023/05/16174534/bakery-hero.png"
+      "name": "Croissant Classic",
+      "price": 29900,
+      "description": "Croissant renyah dengan lapisan butter yang lembut",
+      "image": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=400",
+      "id": "1"
     },
     {
-      "id": "",
-      "name": "vfxbfd213",
-      "price": 2134,
-      "description": "dfsgdfv",
-      "image": "https://images.crowdspring.com/blog/wp-content/uploads/2023/05/16174534/bakery-hero.png"
+      "name": "Sourdough Bread",
+      "price": 30000,
+      "description": "Roti sourdough dengan tekstur chewy dan rasa asam yang khas",
+      "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400",
+      "id": "2"
     },
     {
-      "id": "",
-      "name": "crissant",
-      "price": 123,
-      "description": "fvgsnyjkgjn",
-      "image": "https://tse3.mm.bing.net/th/id/OIP.6Q5-Zydv8o8ioEJ1c0P4BQHaD4?pid=Api&P=0&h=180"
+      "id": "4",
+      "name": "Baguette",
+      "price": 22000,
+      "description": "Roti Prancis klasik dengan kulit renyah dan dalam yang lembut",
+      "image": "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=400"
     },
     {
-      "id": "",
-      "name": "xsac",
-      "price": 123,
-      "description": "efrgdcd",
-      "image": "https://tse3.mm.bing.net/th/id/OIP.6Q5-Zydv8o8ioEJ1c0P4BQHaD4?pid=Api&P=0&h=180"
-    },
-    {
-      "id": "",
-      "name": "tifanie",
-      "price": 0.25,
-      "description": "kyut",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqau0jJ9HTIiZ9sjcaYD3NEZvUMH3HnRiFKNDQ_7aFusGz1lNhGn1Ui_1v_Y4hWo4FVBfkb14T9H_RNqZrbg75Jv9upfNhD3d-IoznaFkJ&s=10"
-    },
-    {
-      "id": "",
-      "name": "tifanie",
-      "price": 0.08,
-      "description": "kyut\n",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqau0jJ9HTIiZ9sjcaYD3NEZvUMH3HnRiFKNDQ_7aFusGz1lNhGn1Ui_1v_Y4hWo4FVBfkb14T9H_RNqZrbg75Jv9upfNhD3d-IoznaFkJ&s=10"
-    },
-    {
-      "id": "",
-      "name": "tifanie",
-      "price": 1,
-      "description": "sistem informasi, semester 5, kyut\n",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqau0jJ9HTIiZ9sjcaYD3NEZvUMH3HnRiFKNDQ_7aFusGz1lNhGn1Ui_1v_Y4hWo4FVBfkb14T9H_RNqZrbg75Jv9upfNhD3d-IoznaFkJ&s=10"
-    },
-    {
-      "id": "",
-      "name": "tifnaie",
-      "price": 0.03,
-      "description": "dfanof",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqau0jJ9HTIiZ9sjcaYD3NEZvUMH3HnRiFKNDQ_7aFusGz1lNhGn1Ui_1v_Y4hWo4FVBfkb14T9H_RNqZrbg75Jv9upfNhD3d-IoznaFkJ&s=10"
+      "name": "bakery enak0",
+      "price": 40000,
+      "description": "menggunakan coklat dan kacang",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtf0x7Jy0smcR5VtN5Qzct-c0V3_GmfP1Lmw&s",
+      "id": "1764108830804"
     }
   ]
 }
