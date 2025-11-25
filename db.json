@@ -27,6 +27,34 @@
       "price": 123,
       "description": "efrgdcd",
       "image": "https://tse3.mm.bing.net/th/id/OIP.6Q5-Zydv8o8ioEJ1c0P4BQHaD4?pid=Api&P=0&h=180"
+    },
+    {
+      "id": "",
+      "name": "tifanie",
+      "price": 0.25,
+      "description": "kyut",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqau0jJ9HTIiZ9sjcaYD3NEZvUMH3HnRiFKNDQ_7aFusGz1lNhGn1Ui_1v_Y4hWo4FVBfkb14T9H_RNqZrbg75Jv9upfNhD3d-IoznaFkJ&s=10"
+    },
+    {
+      "id": "",
+      "name": "tifanie",
+      "price": 0.08,
+      "description": "kyut\n",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqau0jJ9HTIiZ9sjcaYD3NEZvUMH3HnRiFKNDQ_7aFusGz1lNhGn1Ui_1v_Y4hWo4FVBfkb14T9H_RNqZrbg75Jv9upfNhD3d-IoznaFkJ&s=10"
+    },
+    {
+      "id": "",
+      "name": "tifanie",
+      "price": 1,
+      "description": "sistem informasi, semester 5, kyut\n",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqau0jJ9HTIiZ9sjcaYD3NEZvUMH3HnRiFKNDQ_7aFusGz1lNhGn1Ui_1v_Y4hWo4FVBfkb14T9H_RNqZrbg75Jv9upfNhD3d-IoznaFkJ&s=10"
+    },
+    {
+      "id": "",
+      "name": "tifnaie",
+      "price": 0.03,
+      "description": "dfanof",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqau0jJ9HTIiZ9sjcaYD3NEZvUMH3HnRiFKNDQ_7aFusGz1lNhGn1Ui_1v_Y4hWo4FVBfkb14T9H_RNqZrbg75Jv9upfNhD3d-IoznaFkJ&s=10"
     }
   ]
 }

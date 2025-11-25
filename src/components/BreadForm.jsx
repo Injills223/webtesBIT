@@ -1,10 +1,15 @@
 // src/components/BreadForm.jsx
-import React from 'react';
+import React from "react";
 
 const BreadForm = ({ bread, onChange, onSubmit, isEditing }) => {
   return (
-    <form onSubmit={onSubmit} className="bg-white p-6 rounded-xl shadow-soft mb-8">
-      <h2 className="font-title text-xl font-semibold text-accent-dark mb-4">{isEditing ? 'Edit' : 'Add'} Product</h2>
+    <form
+      onSubmit={onSubmit}
+      className="bg-white p-6 rounded-xl shadow-soft mb-8"
+    >
+      <h2 className="font-title text-xl font-semibold text-accent-dark mb-4">
+        {isEditing ? "Edit" : "Add"} Product
+      </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         <div>
           <label className="block text-secondary mb-1">Name</label>
@@ -18,7 +23,7 @@ const BreadForm = ({ bread, onChange, onSubmit, isEditing }) => {
           />
         </div>
         <div>
-          <label className="block text-secondary mb-1">Price ($)</label>
+          <label className="block text-secondary mb-1">Price (Rp.)</label>
           <input
             type="number"
             name="price"
@@ -57,12 +62,12 @@ const BreadForm = ({ bread, onChange, onSubmit, isEditing }) => {
           type="submit"
           className="px-4 py-2 bg-accent-dark text-white rounded hover:bg-[#2C1815]"
         >
-          {isEditing ? 'Update' : 'Add'} Product
+          {isEditing ? "Update" : "Add"} Product
         </button>
         {isEditing && (
           <button
             type="button"
-            onClick={() => onChange({ target: { name: 'id', value: '' } })} // Reset ID untuk membatalkan edit
+            onClick={() => onChange({ target: { name: "id", value: "" } })} // Reset ID untuk membatalkan edit
             className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
           >
             Cancel

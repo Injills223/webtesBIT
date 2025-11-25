@@ -1,8 +1,8 @@
 // src/pages/Home.jsx
-import React, { useState, useEffect } from 'react';
-import BreadList from '../components/BreadList';
-import * as api from '../services/api';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import BreadList from "../components/BreadList";
+import * as api from "../services/api";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [breads, setBreads] = useState([]);
@@ -48,22 +48,25 @@ const Home = () => {
   const handleAdd = () => {
     console.log("Menambah produk baru");
     // Kirim fungsi refetchBreads sebagai state ke halaman add
-    navigate('/manage-bread', { state: { refetchBreads } });
+    navigate("/manage-bread", { state: { refetchBreads } });
   };
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center bg-[#FFF2DF]">Loading...</div>;
-  if (error) return <div className="min-h-screen flex items-center justify-center bg-[#FFF2DF]">Error: {error}</div>;
+  if (loading)
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#FFF2DF]">
+        Loading...
+      </div>
+    );
+  if (error)
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#FFF2DF]">
+        Error: {error}
+      </div>
+    );
 
   return (
     <main className="flex-grow mt-8">
-      <div className="flex justify-center mb-6">
-        <button
-          onClick={handleAdd}
-          className="px-6 py-3 bg-accent-dark text-white rounded-full font-medium hover:bg-[#2C1815] transition-colors"
-        >
-          Add Product
-        </button>
-      </div>
+      <div className="flex justify-center mb-6"></div>
       <BreadList breads={breads} onEdit={handleEdit} onDelete={handleDelete} />
     </main>
   );

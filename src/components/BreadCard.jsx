@@ -1,5 +1,5 @@
 // src/components/BreadCard.jsx
-import React from 'react';
+import React from "react";
 
 const BreadCard = ({ bread, onEdit, onDelete }) => {
   const { id, name, price, image, description } = bread;
@@ -12,8 +12,10 @@ const BreadCard = ({ bread, onEdit, onDelete }) => {
       <img src={image} alt={name} className="w-full h-48 object-cover" />
       <div className="p-4 flex-grow flex flex-col">
         <h3 className="font-semibold text-[#3E2522]">{name}</h3>
-        <p className="text-[#8C6E63] text-sm mt-1">${price.toFixed(2)}</p>
-        <p className="text-[#8C6E63] text-xs mt-1 line-clamp-2">{description}</p>
+        <p className="text-[#8C6E63] text-sm mt-1">Rp.{price.toFixed(2)}</p>
+        <p className="text-[#8C6E63] text-xs mt-1 line-clamp-2">
+          {description}
+        </p>
       </div>
       <div className="p-4 border-t border-cream-pastel flex justify-between">
         <button
