@@ -1,22 +1,56 @@
 // src/services/api.js
-const API_URL = 'http://localhost:5000/breads'; // Pastikan port sesuai dengan JSON Server Anda
+const API_URL = 'http://localhost:5000/breads';
 
-export const getBreads = () => fetch(API_URL).then(res => res.json());
+// Get all breads
+export const getBreads = async () => {
+  const response = await fetch(API_URL);
+  if (!response.ok) throw new Error('Failed to fetch breads');
+  return response.json();
+};
 
-export const getBreadById = (id) => fetch(`${API_URL}/${id}`).then(res => res.json());
+// Get bread by ID
+export const getBreadById = async (id) => {
+  const response = await fetch(`${API_URL}/${id}`);
+  if (!response.ok) throw new Error('Failed to fetch bread');
+  return response.json();
+};
 
-export const addBread = (bread) => fetch(API_URL, {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify(bread),
-}).then(res => res.json());
+// Add new bread with auto-generated ID
+export const addBread = async (bread) => {
+  // Generate unique ID based on timestamp
+  const newBread = {
+    ...bread,
+    id: Date.now().toString()
+  };
+  
+  const response = await fetch(API_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(newBread),
+  });
+  
+  if (!response.ok) throw new Error('Failed to add bread');
+  return response.json();
+};
 
-export const updateBread = (id, bread) => fetch(`${API_URL}/${id}`, {
-  method: 'PUT',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify(bread),
-}).then(res => res.json());
+// Update existing bread
+export const updateBread = async (id, bread) => {
+  const response = await fetch(`${API_URL}/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ ...bread, id }),
+  });
+  
+  if (!response.ok) throw new Error('Failed to update bread');
+  return response.json();
+};
 
-export const deleteBread = (id) => fetch(`${API_URL}/${id}`, {
-  method: 'DELETE',
-});
+// Delete bread
+export const deleteBread = async (id) => {
+  const response = await fetch(`${API_URL}/${id}`, {
+    method: 'DELETE',
+  });
+  
+  if (!response.ok) throw new Error('Failed to delete bread');
+  return response;
+};

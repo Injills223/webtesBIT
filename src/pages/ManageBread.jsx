@@ -2,23 +2,21 @@
 import React, { useState, useEffect } from 'react';
 import BreadForm from '../components/BreadForm';
 import * as api from '../services/api';
-import { useNavigate, useParams, useLocation } from 'react-router-dom'; // Tambahkan useLocation
+import { useNavigate, useParams, Link } from 'react-router-dom';
 
 const ManageBread = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  const location = useLocation(); // Ambil location
-  // Ambil fungsi refetchBreads dari state
-  const refetchBreads = location.state?.refetchBreads;
+  const isEditing = Boolean(id);
 
   const [form, setForm] = useState({
-    id: '',
     name: '',
     price: '',
     description: '',
     image: ''
   });
   const [loading, setLoading] = useState(false);
+  const [saving, setSaving] = useState(false);
 
   useEffect(() => {
     if (id) {
@@ -26,18 +24,23 @@ const ManageBread = () => {
         try {
           setLoading(true);
           const bread = await api.getBreadById(id);
-          setForm(bread);
+          setForm({
+            name: bread.name || '',
+            price: bread.price?.toString() || '',
+            description: bread.description || '',
+            image: bread.image || ''
+          });
         } catch (err) {
           alert("Gagal memuat data produk: " + err.message);
-          console.error(err);
-          navigate('/breads');
+          navigate('/');
         } finally {
           setLoading(false);
         }
       };
       fetchBread();
     } else {
-      setForm({ id: '', name: '', price: '', description: '', image: '' });
+      // Reset form for new product
+      setForm({ name: '', price: '', description: '', image: '' });
     }
   }, [id, navigate]);
 
@@ -49,49 +52,102 @@ const ManageBread = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (loading) return;
+    if (saving) return;
+
+    // Validation
+    if (!form.name.trim()) {
+      alert('Nama produk harus diisi!');
+      return;
+    }
+    if (!form.price || parseFloat(form.price) <= 0) {
+      alert('Harga harus lebih dari 0!');
+      return;
+    }
+    if (!form.image.trim()) {
+      alert('URL gambar harus diisi!');
+      return;
+    }
 
     const breadData = {
-      ...form,
-      price: parseFloat(form.price)
+      name: form.name.trim(),
+      price: parseFloat(form.price),
+      description: form.description.trim(),
+      image: form.image.trim()
     };
 
     try {
-      if (form.id) {
-        await api.updateBread(form.id, breadData);
+      setSaving(true);
+      if (isEditing) {
+        await api.updateBread(id, breadData);
         alert("Produk berhasil diperbarui!");
       } else {
         await api.addBread(breadData);
         alert("Produk berhasil ditambahkan!");
       }
-      setForm({ id: '', name: '', price: '', description: '', image: '' });
-      // Panggil fungsi refetchBreads jika tersedia
-      if (refetchBreads) {
-        refetchBreads();
-      }
-      navigate('/breads');
+      navigate('/');
     } catch (err) {
       alert("Gagal menyimpan produk: " + err.message);
-      console.error(err);
+    } finally {
+      setSaving(false);
     }
   };
 
+  const handleCancel = () => {
+    navigate('/');
+  };
+
   if (loading) {
-    return <div className="min-h-screen flex items-center justify-center bg-[#FFF2DF]">Loading...</div>;
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-creamy-white">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-12 h-12 border-4 border-warm-beige border-t-accent-dark rounded-full animate-spin"></div>
+          <span className="text-secondary font-medium">Memuat data...</span>
+        </div>
+      </div>
+    );
   }
 
   return (
-    <div className="p-6 max-w-6xl mx-auto bg-creamy-white min-h-screen">
-      <h1 className="font-title text-3xl font-bold text-accent-dark mb-6 text-center">
-        {form.id ? 'Edit Product' : 'Add Product'}
-      </h1>
-      <BreadForm
-        bread={form}
-        onChange={handleChange}
-        onSubmit={handleSubmit}
-        isEditing={!!form.id}
-      />
-    </div>
+    <main className="flex-grow py-10">
+      <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Breadcrumb */}
+        <nav className="mb-6">
+          <ol className="flex items-center space-x-2 text-sm">
+            <li>
+              <Link to="/" className="text-secondary hover:text-accent-dark transition-colors">
+                Home
+              </Link>
+            </li>
+            <li className="text-secondary">/</li>
+            <li className="text-accent-dark font-medium">
+              {isEditing ? 'Edit Produk' : 'Tambah Produk'}
+            </li>
+          </ol>
+        </nav>
+
+        {/* Page Title */}
+        <div className="text-center mb-8">
+          <h1 className="text-3xl md:text-4xl font-bold text-accent-dark font-title mb-2">
+            {isEditing ? 'Edit Produk' : 'Tambah Produk Baru'}
+          </h1>
+          <p className="text-secondary">
+            {isEditing 
+              ? 'Perbarui informasi produk roti Anda' 
+              : 'Tambahkan produk roti baru ke katalog'}
+          </p>
+        </div>
+
+        {/* Form */}
+        <BreadForm
+          bread={form}
+          onChange={handleChange}
+          onSubmit={handleSubmit}
+          onCancel={handleCancel}
+          isEditing={isEditing}
+          isSaving={saving}
+        />
+      </div>
+    </main>
   );
 };
 

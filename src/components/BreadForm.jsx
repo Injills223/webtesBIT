@@ -1,78 +1,134 @@
 // src/components/BreadForm.jsx
-import React from "react";
+import React, { useState } from "react";
 
-const BreadForm = ({ bread, onChange, onSubmit, isEditing }) => {
+const BreadForm = ({ bread, onChange, onSubmit, onCancel, isEditing, isSaving }) => {
+  const [previewError, setPreviewError] = useState(false);
+
+  const handleImageChange = (e) => {
+    setPreviewError(false);
+    onChange(e);
+  };
+
   return (
-    <form
-      onSubmit={onSubmit}
-      className="bg-white p-6 rounded-xl shadow-soft mb-8"
-    >
-      <h2 className="font-title text-xl font-semibold text-accent-dark mb-4">
-        {isEditing ? "Edit" : "Add"} Product
-      </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+    <form onSubmit={onSubmit} className="bg-white p-6 md:p-8 rounded-2xl shadow-lg">
+      <div className="space-y-6">
+        {/* Image Preview */}
+        <div className="relative">
+          <label className="block text-accent-dark font-medium mb-3">Preview Gambar</label>
+          <div className="aspect-video w-full bg-cream-pastel/30 rounded-xl overflow-hidden flex items-center justify-center">
+            {bread.image && !previewError ? (
+              <img
+                src={bread.image}
+                alt="Preview"
+                className="w-full h-full object-cover"
+                onError={() => setPreviewError(true)}
+              />
+            ) : (
+              <div className="text-center p-8">
+                <span className="text-6xl mb-2 block">📷</span>
+                <p className="text-secondary text-sm">
+                  {bread.image ? "URL gambar tidak valid" : "Masukkan URL gambar untuk melihat preview"}
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Image URL */}
         <div>
-          <label className="block text-secondary mb-1">Name</label>
+          <label className="block text-accent-dark font-medium mb-2">
+            URL Gambar <span className="text-red-500">*</span>
+          </label>
           <input
-            type="text"
-            name="name"
-            value={bread.name}
-            onChange={onChange}
-            className="w-full p-2 border border-secondary rounded"
+            type="url"
+            name="image"
+            value={bread.image}
+            onChange={handleImageChange}
+            placeholder="https://example.com/gambar-roti.jpg"
+            className="w-full p-3 border-2 border-warm-beige/30 rounded-xl focus:border-warm-beige focus:outline-none focus:ring-2 focus:ring-warm-beige/20 transition-all"
             required
           />
         </div>
-        <div>
-          <label className="block text-secondary mb-1">Price (Rp.)</label>
-          <input
-            type="number"
-            name="price"
-            value={bread.price}
-            onChange={onChange}
-            className="w-full p-2 border border-secondary rounded"
-            required
-            min="0"
-            step="0.01"
-          />
+
+        {/* Name and Price Row */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label className="block text-accent-dark font-medium mb-2">
+              Nama Produk <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              name="name"
+              value={bread.name}
+              onChange={onChange}
+              placeholder="Croissant Classic"
+              className="w-full p-3 border-2 border-warm-beige/30 rounded-xl focus:border-warm-beige focus:outline-none focus:ring-2 focus:ring-warm-beige/20 transition-all"
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-accent-dark font-medium mb-2">
+              Harga (Rp) <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="number"
+              name="price"
+              value={bread.price}
+              onChange={onChange}
+              placeholder="25000"
+              className="w-full p-3 border-2 border-warm-beige/30 rounded-xl focus:border-warm-beige focus:outline-none focus:ring-2 focus:ring-warm-beige/20 transition-all"
+              required
+              min="0"
+              step="100"
+            />
+          </div>
         </div>
-      </div>
-      <div className="mb-4">
-        <label className="block text-secondary mb-1">Image URL</label>
-        <input
-          type="text"
-          name="image"
-          value={bread.image}
-          onChange={onChange}
-          className="w-full p-2 border border-secondary rounded"
-          required
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block text-secondary mb-1">Description</label>
-        <textarea
-          name="description"
-          value={bread.description}
-          onChange={onChange}
-          className="w-full p-2 border border-secondary rounded"
-          rows="3"
-        ></textarea>
-      </div>
-      <div className="flex gap-2">
-        <button
-          type="submit"
-          className="px-4 py-2 bg-accent-dark text-white rounded hover:bg-[#2C1815]"
-        >
-          {isEditing ? "Update" : "Add"} Product
-        </button>
-        {isEditing && (
+
+        {/* Description */}
+        <div>
+          <label className="block text-accent-dark font-medium mb-2">
+            Deskripsi
+          </label>
+          <textarea
+            name="description"
+            value={bread.description}
+            onChange={onChange}
+            placeholder="Croissant renyah dengan lapisan butter yang lembut..."
+            className="w-full p-3 border-2 border-warm-beige/30 rounded-xl focus:border-warm-beige focus:outline-none focus:ring-2 focus:ring-warm-beige/20 transition-all resize-none"
+            rows="4"
+          ></textarea>
+        </div>
+
+        {/* Action Buttons */}
+        <div className="flex flex-col sm:flex-row gap-3 pt-4">
+          <button
+            type="submit"
+            disabled={isSaving}
+            className="flex-1 flex items-center justify-center gap-2 py-3 px-6 bg-accent-dark text-white rounded-xl font-medium hover:bg-opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-accent-dark/20"
+          >
+            {isSaving ? (
+              <>
+                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                <span>Menyimpan...</span>
+              </>
+            ) : (
+              <>
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span>{isEditing ? "Perbarui Produk" : "Simpan Produk"}</span>
+              </>
+            )}
+          </button>
           <button
             type="button"
-            onClick={() => onChange({ target: { name: "id", value: "" } })} // Reset ID untuk membatalkan edit
-            className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
+            onClick={onCancel}
+            disabled={isSaving}
+            className="flex-1 py-3 px-6 bg-transparent border-2 border-warm-beige/50 text-accent-dark rounded-xl font-medium hover:bg-warm-beige/10 transition-all disabled:opacity-50"
           >
-            Cancel
+            Batal
           </button>
-        )}
+        </div>
       </div>
     </form>
   );
