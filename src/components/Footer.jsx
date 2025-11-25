@@ -35,7 +35,7 @@ const Footer = () => {
       </div>
 
       <div className="mt-8 pt-4 border-t border-[#D3A376] text-center text-xs text-[#8C6E63]">
-        © 2024 Artisan Bakery. All Rights Reserved.
+        © 2025 Artisan Bakery. All Rights Reserved.
       </div>
     </footer>
   );
